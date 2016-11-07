@@ -1,0 +1,45 @@
+<nav class="navbar navbar-static-top navbar-inverse" role="navigation">
+  <div class="container-fluid">
+    
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+      <a class="navbar-brand" href="https://github.com/Swiip/generator-gulp-angular">
+        <span class="glyphicon glyphicon-home"></span>
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" uib-collapse="navCollapsed" id="mainNavbar">
+      <ul class="nav navbar-nav">
+        <li>
+          <a href="/#/">Home</a>
+        </li>
+        <li>
+          <a ng-href="/#/list" >List</a>
+        </li>
+        <li>
+          <a ng-href="/#/upload" >Upload</a>
+        </li>
+        <li>
+          <a ng-href="/#/lambda">Lambda</a>
+        </li>
+        <li>
+          <a ng-href="/#/dynamodb">DynamoDB</a>
+        </li>
+        <li>
+          <a ng-href="/#/promises">Promises</a>
+        </li>
+        <li>
+          <a ng-href="/#/about">About</a>
+        </li>
+        <li>
+          <a ng-href="/#/contact">Contact</a>
+        </li>
+      </ul>
+    </div>
+  
+  </div>
+</nav>

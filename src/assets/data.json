@@ -1,0 +1,27 @@
+[
+	{
+		  "label": "Overwrite Upload Size",
+	      "type": "ebextension",
+	      "location": "overwrite_upload_size.config",
+	      "tags": "overwrite upload size max_upload"
+  	},
+  	{
+		  "label": "General Commands",
+	      "type": "ebextension",
+	      "location": "ebextension_commands.config",
+	      "tags": "command general commands"
+  	},
+  	{
+		  "label": "customMetricsTest",
+	      "type": "script",
+	      "location": "customMetricsTest.sh",
+	      "tags": "test custom metrics CloudWatch alarm metric alarms drivera"
+ 	},
+ 	{
+		  "label": "somepackage",
+	      "type": "package",
+	      "location": "somepackage.rpm",
+	      "tags": "rpm package test fake"
+	}
+
+]

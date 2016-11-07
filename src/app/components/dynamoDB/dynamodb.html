@@ -1,0 +1,78 @@
+<div id="dynamodb">
+
+	<p>This is the DynamoDB route, for testing purposes:</p>
+
+<div class="container">
+
+	<div id="searchArea" class="text-center">
+		<p>Search:</p> 
+		Tags: <input ng-model="dynamodb.query.FileTags.S" type="text" name="searchbox1"/>
+		Type: <select ng-model="dynamodb.filterItem.files" ng-options="option.name for option in dynamodb.filterOptions.files " name="dropdown">
+		</select>
+		
+	</div>
+	<table class="table-condensed table-bordered">
+	  <tr>
+	    <th class="item-label">Label</th>
+	    <th class="download"></th>
+	    <th class="item-type hidden-xs">Type</th>
+	    <th class="item-tags">Tags</th>
+	  </tr>
+	  <tr ng-repeat="item in dynamodb.fullDynDBData  | filter:dynamodb.query | filter:dynamodb.customFilter | orderBy: 'FileName.S' ">
+	    <td class="item-label">{{item.FileName.S}}</td>
+	    <td class="download"><a href="/{{item.FileType.S}}s/{{item.FileName.S}}" class="{{item.FileType.S}}"></a></td>
+	    <td class="item-type hidden-xs">{{item.FileType.S}}</td>
+	    <!-- <td><a href="{{item.location}}">{{item.label}}</a></td> -->
+	    <td class="item-tags"><div>{{item.FileTags.S}}</div></td>
+	  </tr>
+	</table>	
+</div>
+
+<div class="container">	   
+	  	<input ng-model="dynamodb.key" type="text" name="payloader"/>
+
+	  	<button id="searchDYNAMO" class="btn btn-default" ng-click="dynamodb.queryAction()">Query Item</button>
+
+	  	<button id="deleteDYNAMO" class="btn btn-default" ng-click="dynamodb.deleteAction()">Delete Item</button>
+
+	  	<button id="refreshDYNAMO" class="btn btn-default" ng-click="dynamodb.refreshTable()">Refresh Table</button>
+</div>
+
+<div class="container queryResults">
+	<p>{{dynamodb.queriedItem}}</p>
+</div>
+
+<div class="container">
+
+    <form id="uploadForm" method="get" accept-charset="utf-8" ng-submit="dynamodb.populate()">
+    	<div class="formPart">
+    		    <label for="fileLabel">File Name:</label>
+    		    <input type="text" ng-model="dynamodb.newItem.FileName"/>
+    		    <label for="fileDescription">File Description:</label>
+    		    <input type="text" ng-model="dynamodb.newItem.FileDescription"/>
+    		    
+    		    <label for="fileDate">File Date (yyyy/mm/dd):</label>
+    		    <input type="text" ng-model="dynamodb.newItem.FileDate"/>
+    			<label for="filetype">File Type:</label>
+    			<div class="radio">
+    				<ul class="radio">
+    					<li class="radio-item1"><input type="radio" name="fileType" ng-model="dynamodb.newItem.FileType" value="ebextension" >ebextension</li>
+    					<li class="radio-item2"><input type="radio" name="filetype" ng-model="dynamodb.newItem.FileType" value="script">script</li>
+    					<li class="radio-item3"><input type="radio" name="filetype" ng-model="dynamodb.newItem.FileType" value="package">package</li>
+    				</ul>
+    			</div>
+    	</div>
+    	<div class="formPart">
+    		<label for="fileTags">Tags (comma separated):</label>
+    		<input type="text" ng-model="dynamodb.newItem.FileTags" />
+    		<label for="file-chooser">File To Upload:</label>
+    		<input type="file" id="file-chooser"/> 
+
+    		<div id="dropzone" class="dropzone">Drop Files Here</div>
+
+    		<button id="upload-button" class="btn btn-default">Create New Item</button>
+    	</div>
+    </form>
+</div>	
+	
+</div>

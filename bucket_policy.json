@@ -1,0 +1,36 @@
+{
+	"Version": "2008-10-17",
+	"Statement": [
+		{
+			"Sid": "AllowPublicReadBucketAuth",
+			"Effect": "Allow",
+			"Principal": {
+				"AWS": "*"
+			},
+			"Action": "s3:GetObject",
+			"Resource": [
+				"arn:aws:s3:::thabeat--archiving-tool/**/*",
+				"arn:aws:s3:::thabeat--archiving-tool/*"
+			]
+		},
+		{
+			"Sid": "DenyAllButFederated",
+			"Effect": "Deny",
+			"NotPrincipal": {
+				"AWS": [
+					"arn:aws:iam::419400150602:user/s3user",
+					"arn:aws:iam::419400150602:user/thabeat",
+					"arn:aws:iam::419400150602:root",
+					"arn:aws:iam::419400150602:role/myAppFBRole"
+				]
+			},
+			"Action": "s3:*",
+			"Resource": [
+				"arn:aws:s3:::thabeat--archiving-tool/ebextensions/*",
+				"arn:aws:s3:::thabeat--archiving-tool/data.json",
+				"arn:aws:s3:::thabeat--archiving-tool/packages/*",
+				"arn:aws:s3:::thabeat--archiving-tool/script/*"
+			]
+		}
+	]
+}

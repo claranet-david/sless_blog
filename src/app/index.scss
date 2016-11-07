@@ -1,0 +1,302 @@
+/**
+ *  If you want to override some bootstrap variables, you have to change values here.
+ *  The list of variables are listed here bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss
+ */
+$navbar-inverse-link-color: #5AADBB;
+$icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
+
+/**
+ *  Do not remove the comments below. It's the markers used by wiredep to inject
+ *  sass dependencies when defined in the bower.json of your dependencies
+ */
+// bower:scss
+// endbower
+
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+.thumbnail {
+  height: 200px;
+
+  img.pull-right {
+    width: 50px;
+  }
+}
+
+/**
+ *  Do not remove the comments below. It's the markers used by gulp-inject to inject
+ *  all your sass files automatically
+ */
+// injector
+// endinjector
+
+.ng-hide {
+  /* this is just another form of hiding an element */
+  display: none!important;
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+  -ms-transform: scale(0); /* IE 9 */
+  -webkit-transform: scale(0); /* Safari */
+  transform: scale(0);
+}
+
+/*******Font Importing & SetUp *******/
+
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic);
+
+@font-face {
+  font-family: 'IcoMoon';
+  src: local('IcoMoon'), local('IcoMoon'),
+    url('../assets/icomoonfree.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+br, .clearfix{
+	clear: both;
+}
+
+body{
+	background-color: $background;
+	color: $font;
+	font-size: $fontsize;
+	font-family: 'Roboto', sans-serif;
+}
+
+#LogoutAmazon, #LogoutFB{
+		display: none;
+		text-decoration: none;
+		max-width: 10em;
+		margin: 1em 0;
+		-webkit-box-shadow: 2px 2px 0 3px $shadows;
+		box-shadow: 2px 2px 0 3px $shadows;
+	}
+
+	#LoginWithAmazon, #LoginWithFB{
+		display: block;
+		max-width: 10em;
+		margin: 1em 0;
+		-webkit-box-shadow: 2px 2px 0 3px $shadows;
+		box-shadow: 2px 2px 0 3px $shadows;
+
+	}
+
+	#searchArea{
+		margin-bottom: 20px;
+	}
+
+	#navigationmenu{
+		display: block;
+		}
+
+		#navigationmenu ul{
+			list-style: none;
+		}
+
+		#navigationmenu ul li{
+			display: inline-block;
+		}
+
+		#navigationmenu ul li a{
+			margin-right: 8px;
+			text-decoration: none;
+	}
+
+	#logmessage,
+		#logmessage.ko{
+			display: block;
+			color: white;
+			background-color: red;
+			margin-top: 10px;
+			padding: 5px;
+			-webkit-border-radius: 6px;
+			border-radius: 6px;
+
+		}
+
+		#logmessage.ok{
+			color: white;
+			background-color: green;
+			font-weight: bold;
+			padding: 5px;
+		    animation-name: fadeOut;
+		    animation-duration: 5s;
+		    animation-fill-mode: forwards;
+		}
+
+		@-webkit-keyframes fadeOut{
+
+			/* Chrome, Safari, Opera */ 
+
+		    from {opacity: 1; display: block;}
+		    to {opacity: 0; display: none;}
+		} 
+		@keyframes fadeOut{
+
+			/* Standard syntax */ 
+
+		    from {opacity: 1; display: block;}
+		    to {opacity: 0; display: none;}
+	}
+
+/*******List PAGE *******/
+	table{
+		width: 100%;
+		table-layout: fixed;
+	}
+
+		tr{
+			min-height: 20px;
+		}
+		tr:nth-child(odd) td:nth-child(even){background-color: #ddd;}
+		tr:nth-child(even) td:nth-child(even){background-color: #aaa;}
+		tr:nth-child(odd) td:nth-child(odd){background-color: #f3f3f3;}
+		tr:nth-child(even) td:nth-child(odd){background-color: #c3c3c3;}
+		tr:hover{
+			outline: solid 3px #666;
+			color: #444;
+		}
+		th{
+			text-align: center;
+			background-color: #999;
+			padding: 5px 0 0 0;
+		}
+		th.download:before{
+			font-family: 'IcoMoon';
+			content: "\ea36";
+		}
+		td:not(.download){
+			min-height: 3em;
+		}
+		.item-label{
+			max-width: 15em;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis; 
+		}
+		.download{
+			width: 3em;
+
+			&:hover{
+				font-size: 1.1em;
+				a{text-decoration: none;}
+			}
+
+		}
+		.item-type{
+			width: 10em;
+		}
+		.item-tags{
+			min-width: 50%;
+			div{
+				z-index: 3;
+				margin: 0 auto;
+				width: 90%;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				&:hover{
+					position: relative;
+					display: inline-block;
+					z-index: 20;
+					text-overflow: initial;
+					overflow: visible;
+				}
+			}
+		}
+		td a{
+			display: inline-block;
+			width: 100%;
+			text-align: center;
+			text-decoration: none;
+		}
+		td a.ebextension:before{
+			font-family: "IcoMoon";
+			content: "\e9c1";
+		}
+		td a.script:before{
+			font-family: "IcoMoon";
+			content: "\e907";
+		}
+		td a.package:before{
+			font-family: "IcoMoon";
+			content: "\e960";
+		}
+
+/*******Upload PAGE *******/
+	#uplaodForm{
+		display: block;
+		outline: solid 1px tomato;
+		text-align: left;
+	}
+
+	#uploadForm div.formPart > input, #uploadForm div.formPart > label{
+		display: block;
+		width: 80%;
+		clear: both;
+	}
+
+	#uploadForm ul.radio{
+		list-style: none;
+		display: block;
+		clear: both;
+	}
+	#uploadForm ul.radio li{
+		width: 100%;
+	}
+
+/******Lambda Test*****/
+
+	#lambdaResponse{
+		text-align: right;
+		margin: 20px 0;
+		display: block;
+		min-height: 2em;
+		font-size: 3em;
+		font-weight: bolder;
+	}
+	#lambdaElapsed{
+		font-size: 0.8em;
+	}
+
+/*****DynamoDB******/
+	#dynamodb .container{
+		margin-bottom: 20px;
+	}
+
+	#dropzone{
+		margin: 15px;
+		height: 150px;
+		width: 150px;
+		text-align: center;
+		line-height: 150px;
+		
+		&.dropzone{
+			outline: dashed 3px #bbb;
+			color: #bbb;
+		}
+		&.dropzone.over{
+			margin: 15px; 
+			outline: dashed 5px #222;
+			color: #222;	
+		}
+	}
+
+	div.formPart{
+		display: inline-block;
+		width: 46.5%;
+		margin-right: 3%;
+		vertical-align: top;
+		min-width: 180px;
+	}
+
+	.queryResults{
+		min-height: 100px;
+		font-size: 1rem;
+	}
+
