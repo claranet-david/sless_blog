@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('yoProjectJS')
+    .module('sless_blog')
     .directive('acmeNavbar', acmeNavbar);
 
   /** @ngInject */

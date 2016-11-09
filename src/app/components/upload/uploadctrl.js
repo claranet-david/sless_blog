@@ -1,7 +1,7 @@
 (function(){
 	// body...
 	angular
-		.module('yoProjectJS')
+		.module('sless_blog')
 		.controller('UploadController', UploadController);
 
 		UploadController.$inject = ['$scope', '$http', '$routeParams','loginService', 'customAWSService'];

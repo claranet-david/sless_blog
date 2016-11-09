@@ -1,7 +1,7 @@
 // loginFBService
 (function(){
 	angular
-		.module('yoProjectJS')
+		.module('sless_blog')
 		.service('loginFBService', loginFBService);
 
 		loginFBService.$inject = ['customAWSService', 'globalService'];

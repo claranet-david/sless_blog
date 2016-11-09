@@ -3,7 +3,7 @@
   'use strict';
 
   angular
-    .module('yoProjectJS')
+    .module('sless_blog')
     .constant('malarkey', malarkey)
     .constant('moment', moment);
 

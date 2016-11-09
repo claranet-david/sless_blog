@@ -12,7 +12,7 @@
     var vm;
     var el;
 
-    beforeEach(module('yoProjectJS'));
+    beforeEach(module('sless_blog'));
     beforeEach(inject(function($compile, $rootScope, githubContributor, $q, _$log_) {
       $log = _$log_;
 

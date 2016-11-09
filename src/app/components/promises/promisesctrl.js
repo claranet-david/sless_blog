@@ -1,6 +1,6 @@
 (function(){
 	angular
-		.module('yoProjectJS')
+		.module('sless_blog')
 		.controller('PromisesController', PromisesController);
 
 		PromisesController.$inject = ['$scope', '$http', '$q', '$timeout', 'loginService', 'customAWSService'];

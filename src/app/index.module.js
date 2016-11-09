@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('yoProjectJS', 
+    .module('sless_blog', 
     	['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 
     	'ngMessages', 'ngAria', 'ngRoute', 'toastr', 
     	'ui.bootstrap']);

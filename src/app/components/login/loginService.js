@@ -2,7 +2,7 @@
 
 (function(){
 	angular
-		.module('yoProjectJS')
+		.module('sless_blog')
 		.service('loginService', loginService);
 
 		loginService.$inject = ['loginFBService'];

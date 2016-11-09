@@ -1,6 +1,6 @@
 (function(){
 	angular
-		.module('yoProjectJS')
+		.module('sless_blog')
 		.controller('testLambdaController', testLambdaController);
 
 		testLambdaController.$inject = ['$scope', '$http', 'loginService', 'customAWSService'];
