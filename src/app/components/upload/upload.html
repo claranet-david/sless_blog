@@ -2,38 +2,37 @@
 
 	<p>Hi! This is the Upload Page!</p>
 	
-	<form id="uploadForm" method="get" accept-charset="utf-8" ng-submit="populate()">
-			<div class="formPart">
-				    <label for="fileLabel">File Label:</label>
-				    <input type="text" ng-model="upload.fileLabel"/>
-				    <label for="fileDescription">File Description:</label>
-				    <input type="text" ng-model="upload.fileDescription"/>
-				    
-				    <label for="fileDate">File Date:</label>
-				    <input type="date" ng-model="upload.fileDate"/>
-					<label for="filetype">FileType:</label>
-					<div class="radio">
-						<ul class="radio">
-							<li class="radio-item1"><input type="radio" name="fileType" ng-model="upload.fileType" value="ebextension" >ebextension</li>
-							<li class="radio-item2"><input type="radio" name="filetype" ng-model="upload.fileType" value="script">script</li>
-							<li class="radio-item3"><input type="radio" name="filetype" ng-model="upload.fileType" value="package">package</li>
-						</ul>
-					</div>
-			</div>
-			<div class="formPart">
-			    	<label for="fileTags">Tags:</label>
-			    	<input type="text" ng-model="upload.fileTags" />
-					<label for="file-chooser">File To Upload:</label>
-					<input type="file" id="file-chooser" /> 
-					<button id="upload-button" class="btn btn-default">Upload to S3</button>
-					<br>
-			</div>
-	</form>
-			
+	<div class="container">
 
-			<div id="results">
-				<br>
-				<p style="font-size: .5em;">{{upload.strigyObj}}</p>
-			</div>
-	
+	    <form id="uploadForm" method="get" accept-charset="utf-8" ng-submit="dynamodb.populate()">
+	    	<div class="formPart">
+	    		    <label for="fileLabel">File Name:</label>
+	    		    <input type="text" ng-model="dynamodb.newItem.FileName"/>
+	    		    <label for="fileDescription">File Description:</label>
+	    		    <input type="text" ng-model="dynamodb.newItem.FileDescription"/>
+	    		    
+	    		    <label for="fileDate">File Date (yyyy/mm/dd):</label>
+	    		    <input type="text" ng-model="dynamodb.newItem.FileDate"/>
+	    			<label for="filetype">File Type:</label>
+	    			<div class="radio">
+	    				<ul class="radio">
+	    					<li class="radio-item1"><input type="radio" name="fileType" ng-model="dynamodb.newItem.FileType" value="ebextension" >ebextension</li>
+	    					<li class="radio-item2"><input type="radio" name="filetype" ng-model="dynamodb.newItem.FileType" value="script">script</li>
+	    					<li class="radio-item3"><input type="radio" name="filetype" ng-model="dynamodb.newItem.FileType" value="package">package</li>
+	    				</ul>
+	    			</div>
+	    	</div>
+	    	<div class="formPart">
+	    		<label for="fileTags">Tags (comma separated):</label>
+	    		<input type="text" ng-model="dynamodb.newItem.FileTags" />
+	    		<label for="file-chooser">File To Upload:</label>
+	    		<input type="file" id="file-chooser"/> 
+
+	    		<div id="dropzone" class="dropzone">Drop Files Here</div>
+
+	    		<button id="upload-button" class="btn btn-default">Create New Item</button>
+	    	</div>
+	    </form>
+	</div>	
+		
 </div>

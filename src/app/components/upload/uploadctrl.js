@@ -17,6 +17,34 @@
             vm.file;
             vm.obj = {};
 
+            vm.dropzone = document.getElementById('dropzone');
+
+            vm.dropzone.ondrop = function(e){
+                e.preventDefault();
+                this.className = 'dropzone';
+
+                
+                if(e.dataTransfer.files.length==1){
+                    console.log("Ok!");
+                    console.log(e.dataTransfer.files[0]);
+                    vm.newItem.FileName = e.dataTransfer.files[0].name;
+                    console.log("FileName: " + vm.newItem.FileName);
+                    vm.newItem.FileDate = e.dataTransfer.files[0].lastModifiedDate.toISOString().slice(0,10);
+                    console.log("FileDate: " + vm.newItem.FileDate);
+                    $scope.$digest();
+                    return e.dataTransfer.files[0];
+                }
+                else console.log("There was some sort of error: Should be exclusively one item!");
+            }
+            vm.dropzone.ondragover = function(e){
+                this.className = 'dropzone over';
+                return false;
+            }
+            vm.dropzone.ondragleave = function(e){
+                this.className = 'dropzone';
+                return false;
+            }
+            
             button.addEventListener('click', function() {
               
               vm.file = fileChooser.files[0];
