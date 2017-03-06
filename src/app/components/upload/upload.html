@@ -4,35 +4,38 @@
 	
 	<div class="container">
 
-	    <form id="uploadForm" method="get" accept-charset="utf-8" ng-submit="dynamodb.populate()">
+	    <form id="uploadForm" method="get" accept-charset="utf-8" ng-submit="upload.populate()">
 	    	<div class="formPart">
 	    		    <label for="fileLabel">File Name:</label>
-	    		    <input type="text" ng-model="dynamodb.newItem.FileName"/>
+	    		    <input type="text" ng-model="upload.newItem.fileName"/>
 	    		    <label for="fileDescription">File Description:</label>
-	    		    <input type="text" ng-model="dynamodb.newItem.FileDescription"/>
+	    		    <input type="text" ng-model="upload.newItem.fileDescription"/>
 	    		    
 	    		    <label for="fileDate">File Date (yyyy/mm/dd):</label>
-	    		    <input type="text" ng-model="dynamodb.newItem.FileDate"/>
+	    		    <input type="text" ng-model="upload.newItem.fileDate"/>
 	    			<label for="filetype">File Type:</label>
 	    			<div class="radio">
 	    				<ul class="radio">
-	    					<li class="radio-item1"><input type="radio" name="fileType" ng-model="dynamodb.newItem.FileType" value="ebextension" >ebextension</li>
-	    					<li class="radio-item2"><input type="radio" name="filetype" ng-model="dynamodb.newItem.FileType" value="script">script</li>
-	    					<li class="radio-item3"><input type="radio" name="filetype" ng-model="dynamodb.newItem.FileType" value="package">package</li>
+	    					<li class="radio-item1"><input type="radio" name="fileType" ng-model="upload.newItem.fileType" value="ebextension" >ebextension</li>
+	    					<li class="radio-item2"><input type="radio" name="filetype" ng-model="upload.newItem.fileType" value="script">script</li>
+	    					<li class="radio-item3"><input type="radio" name="filetype" ng-model="upload.newItem.fileType" value="package">package</li>
 	    				</ul>
 	    			</div>
 	    	</div>
 	    	<div class="formPart">
 	    		<label for="fileTags">Tags (comma separated):</label>
-	    		<input type="text" ng-model="dynamodb.newItem.FileTags" />
+	    		<input type="text" ng-model="upload.newItem.fileTags" />
 	    		<label for="file-chooser">File To Upload:</label>
 	    		<input type="file" id="file-chooser"/> 
 
 	    		<div id="dropzone" class="dropzone">Drop Files Here</div>
 
-	    		<button id="upload-button" class="btn btn-default">Create New Item</button>
+	    		<button id="upload-button" class="btn btn-default">Upload New Item</button>
 	    	</div>
 	    </form>
+	    <div id="results">
+	    	
+	    </div>
 	</div>	
 		
 </div>
