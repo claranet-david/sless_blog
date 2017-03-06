@@ -4,9 +4,9 @@
 		.module('sless_blog')
 		.service('loginFBService', loginFBService);
 
-		loginFBService.$inject = ['customAWSService', 'globalService'];
+		loginFBService.$inject = ['$location', 'customAWSService', 'globalService'];
 
-		function  loginFBService(customAWSService, globalService){
+		function  loginFBService($location, customAWSService, globalService){
 			/*!
 			* Login to your application using Facebook.
 			* Uses the Facebook SDK for JavaScript available here:
@@ -41,6 +41,8 @@
 
 			// window.fbAsyncInit //Use this to login onLoad
 			loginWithFB.onclick = function () {
+				vm.actuallocation = $location.absUrl();
+
 				FB.init({
 					appId: appId,
 					status: true, 
@@ -67,12 +69,17 @@
 					//document.getElementById('navigationmenu').style.display = 'block';
 					document.getElementById('LogoutFB').style.display = 'block';
 					document.getElementById('LoginWithFB').style.display = 'none';
-					// window.location.replace(adresstogo);
+
+					window.location.replace(vm.actuallocation);
 				});
 
 			};
 
 			document.getElementById('LogoutFB').onclick = function () {
+
+				vm.actuallocation = $location.absUrl();
+
+				console.log("#### StartLogout Script " + vm.actuallocation);
 
 				customAWSService.AWS.config.credentials = new AWS.WebIdentityCredentials({
 					ProviderId: '',
@@ -85,7 +92,7 @@
 				document.getElementById('LogoutFB').style.display = 'none';
 				document.getElementById('LoginWithFB').style.display = 'block';
 				document.getElementById('logmessage').innerHTML = 'not logged in!';
-				document.getElementById('logmessage').className = 'ko';       
+				document.getElementById('logmessage').className = 'ko';      
 				//document.getElementById('navigationmenu').style.display = 'none';
 
 				// FB.init({
@@ -95,15 +102,18 @@
 				// 	xfbml: true,
 				// 	version: 'v2.4'
 				// });
-				// FB.logout(function() {
+				FB.logout(function() {
+				//	window.location.reload();
+
 
 				// 	document.getElementById('LogoutFB').style.display = 'none';
 				// 	document.getElementById('LoginWithFB').style.display = 'block';
 				// 	document.getElementById('logmessage').innerHTML = 'not logged in!';
 				// 	document.getElementById('logmessage').className = 'ko';       
 				// 	document.getElementById('navigationmenu').style.display = 'none';
-				// });
-
+				});
+				
+				window.location.reload(vm.actuallocation);
 			};
 
 
