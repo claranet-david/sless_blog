@@ -38,11 +38,16 @@
         controller: 'PromisesController',
         controllerAs: 'promises'
       })
-      .when('/list',{
-        templateUrl: 'app/components/list/list.html',
-        controller: 'ListController',
-        controllerAs: 'list'
-      })
+      .when('/cw-graph', {
+        templateUrl: 'app/components/cw-graph/cw.html',
+        controller: 'cloudWatchGraphController',
+        controllerAs: 'cw-graph'
+      })      
+      // .when('/list',{
+      //   templateUrl: 'app/components/list/list.html',
+      //   controller: 'ListController',
+      //   controllerAs: 'list'
+      // })
       .otherwise({
         redirectTo: '/'
       });
