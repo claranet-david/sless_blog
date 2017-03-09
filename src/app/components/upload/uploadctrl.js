@@ -102,11 +102,11 @@
                     ContentType: vm.newItem.file.type, 
                     Body: vm.newItem.file,
                     Metadata: {
-                        file: String(vm.fileLabel),
-                        description: String(vm.fileDescription),
-                        date: String(vm.fileDate),
-                        type: String(vm.fileType),
-                        tags: String(vm.fileTags),
+                        file: String(vm.newItem.fileLabel),
+                        description: String(vm.newItem.fileDescription),
+                        date: String(vm.newItem.fileDate),
+                        type: String(vm.newItem.fileType),
+                        tags: String(vm.newItem.ileTags),
                         locatiion: String(vm.obj.location)
                     }
                 };
