@@ -12,7 +12,6 @@
 
 			vm.fileChooser = document.getElementById('file-chooser');
             var button = document.getElementById('upload-button');
-            var printbutton = document.getElementById('print-button');
             vm.results = document.getElementById('results');
             vm.fileName; 
             vm.file;
@@ -27,14 +26,14 @@
 
                 
                 if(e.dataTransfer.files.length==1){
-                    console.log("Ok!");
-                    console.log(e.dataTransfer.files[0]);
+                    //console.log("Ok!");
+                    //console.log(e.dataTransfer.files[0]);
                     vm.newItem.file = e.dataTransfer.files[0]
-                    console.log(vm.newItem.file);
+                    //console.log(vm.newItem.file);
                     vm.newItem.fileName = e.dataTransfer.files[0].name;
-                    console.log("# FileName: " + vm.newItem.fileName);
+                    //console.log("# FileName: " + vm.newItem.fileName);
                     vm.newItem.fileDate = e.dataTransfer.files[0].lastModifiedDate.toISOString().slice(0,10);
-                    console.log("# FileDate: " + vm.newItem.fileDate);
+                    //console.log("# FileDate: " + vm.newItem.fileDate);
                     $scope.$digest();
                     return e.dataTransfer.files[0];
                 }
@@ -49,19 +48,8 @@
                 return false;
             }
             
-                     
-            // vm.stringyObj = {}; //JSON.stringify(vm.obj,null,"    ");
-            //     vm.stringyObj.label = vm.fileLabel;
-            //     vm.stringyObj.description = vm.fileDescription;
-            //     vm.stringyObj.date = vm.fileDate;
-            //     vm.stringyObj.type = vm.fileType;
-            //     vm.stringyObj.tags = vm.fileTags;
-            //     if(vm.newItem.file){
-            //         vm.stringyObj.location = String(vm.fileType+"s/"+vm.fileName);
-            //     }
-
             vm.populate = function(){
-                vm.obj.label = vm.newItem.fileLabel;
+                vm.obj.label = vm.newItem.fileName;
                 vm.obj.description = vm.newItem.fileDescription;
                 vm.obj.date = vm.newItem.fileDate;
                 vm.obj.type = vm.newItem.fileType;
@@ -69,31 +57,15 @@
                 if(vm.newItem.file){
                     vm.obj.location = String(vm.newItem.fileType+"s/"+vm.newItem.fileName);
                 }
-                console.log(vm.obj);
-                console.log(JSON.stringify(vm.obj,null,"    "));
+                // console.log(vm.obj);
+                // console.log(JSON.stringify(vm.obj,null,"    "));
             }
-
-            printbutton.addEventListener('click', function(){
-
-                vm.populate();
-
-                console.log("### Filechooser: " + vm.fileChooser.files[0]);
-                console.log("\n### vm.newItem.file: ");
-                console.log(vm.newItem.file);
-                console.log("*********************\n");
-
-            }, false);
 
             button.addEventListener('click', function() {
 
-              //console.log(vm.fileChooser.files[0]);
-              
-              //vm.file = vm.fileChooser.files[0];
-
               if (vm.newItem.file) {
                 vm.results.innerHTML = '';
-                console.log(vm.newItem.file.name);
-                vm.fileName = String(vm.newItem.file.name);
+                vm.newItem.fileName = String(vm.newItem.file.name);
                 vm.populate();
 
 
@@ -106,7 +78,7 @@
                         description: String(vm.newItem.fileDescription),
                         date: String(vm.newItem.fileDate),
                         type: String(vm.newItem.fileType),
-                        tags: String(vm.newItem.ileTags),
+                        tags: String(vm.newItem.fileTags),
                         locatiion: String(vm.obj.location)
                     }
                 };
@@ -114,7 +86,7 @@
                 customAWSService.bucket.config.credentials = customAWSService.AWS.config.credentials;
                 
                 customAWSService.bucket.upload(params, function (err, data) {
-                  vm.results.innerHTML = err ? 'ERROR!' + String(err) : 'UPLOADED.';
+                  vm.results.innerHTML = err ? 'ERROR! ' + String(err) : 'UPLOADED.';
                 });
               } else {
                 vm.results.innerHTML = 'Nothing to upload.';
