@@ -38,6 +38,11 @@
         controller: 'PromisesController',
         controllerAs: 'promises'
       })
+      .when('/cw-graph', {
+        templateUrl: 'app/components/cw-graph/cw.html',
+        controller: 'cloudWatchGraphController',
+        controllerAs: 'cw-graph'
+      })    
       .when('/list',{
         templateUrl: 'app/components/list/list.html',
         controller: 'ListController',
