@@ -17,7 +17,7 @@
 			  AWS.config.setPromisesDependency($q);
 			//} //info in https://blogs.aws.amazon.com/javascript/post/Tx3BZ2DC4XARUGG/Support-for-Promises-in-the-SDK
 
-			vm.AWS.config.region = 'us-west-2';
+			vm.AWS.config.region = 'eu-west-1';
 
 			vm.roleArnFB = 'arn:aws:iam::419400150602:role/myAppFBRole';
 			vm.roleArnAmazon = 'arn:aws:iam::419400150602:role/myAppAmazonRole';
