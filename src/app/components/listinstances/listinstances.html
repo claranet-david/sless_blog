@@ -7,7 +7,7 @@
 	<h2>List Instances</h2>
 
 	<div>
-		<select ng-model="listinstances.selectedregion" ng-options="option.RegionName for option in listinstances.regions.Regions" name="dropdown"></select>
+		<select ng-model="listinstances.selectedRegion" ng-options="option.RegionName for option in listinstances.regions.Regions" name="dropdown"></select>
 		<button id="listInstancesNewRegion" class="btn btn-default" ng-click="listinstances.selectRegion()">Apply New Region</button>
 	</div>
 
@@ -18,7 +18,7 @@
 			ng-class="{ 'running':'panel-success', 'stopped':'panel-danger', 'pending': 'panel-warning', 'shutting-down': 'panel-warning', 'terminated': 'panel-warning', 'stopping': 'panel-warning'}[reservation.Instances[0].State.Name]"
 			ng-repeat="(key, reservation) in reservations">
 				<div class="panel-heading" >
-					<h3 ng-repeat="tag in reservation.Instances[0].Tags" ng-show="tag.Key == 'Name'"><span class="glyphicon" ng-class="{ 'running':'glyphicon-floppy-saved', 'stopped':'glyphicon-floppy-remove', 'pending': 'glyphicon-floppy-save', 'shutting-down': 'glyphicon-floppy-save', 'terminated': 'glyphicon-floppy-remove', 'stopping': 'glyphicon-floppy-save'}[reservation.Instances[0].State.Name]"
+					<h3 ng-repeat="tag in reservation.Instances[0].Tags" ng-show="tag.Key == 'Name'"><span class="glyphicon" ng-class="{ 'running':'glyphicon-floppy-saved', 'stopped':'glyphicon-floppy-remove', 'pending': 'glyphicon-floppy-open', 'shutting-down': 'glyphicon-floppy-save', 'terminated': 'glyphicon-floppy-remove', 'stopping': 'glyphicon-floppy-save'}[reservation.Instances[0].State.Name]"
 					data-toggle="tooltip" title="{{reservation.Instances[0].State.Name}}" ></span> {{tag.Value}}</h3>
 					<h4 ">{{reservation.Instances[0].InstanceId}}</h4>
 				</div>
@@ -30,10 +30,10 @@
 						<li>InstanceType: {{reservation.Instances[0].InstanceType}}</li>
 						<li>Keypair Used: {{reservation.Instances[0].KeyName}}</li>
 						<li>Private IP: {{reservation.Instances[0].PrivateIpAddress}}
-						<a href="http://{{reservation.Instances[0].PrivateDnsName}}"><span class="glyphicon glyphicon-new-window"></span></a>
+						<a href="http://{{reservation.Instances[0].PrivateDnsName}}" target="_blank"><span class="glyphicon glyphicon-new-window"></span></a>
 						</li>
 						<li class="" ng-class="{ 'string' : 'text-primary bg-success', 'undefined' : 'text-muted bg-danger'}[listinstances.functionType(reservation.Instances[0].PublicIpAddress)]">Public IP: {{reservation.Instances[0].PublicIpAddress}}
-						<a href="http://{{reservation.Instances[0].PublicDnsName}}"><span class="glyphicon glyphicon-new-window"></span></a>
+						<a href="http://{{reservation.Instances[0].PublicDnsName}}" target="_blank"><span class="glyphicon glyphicon-new-window"></span></a>
 						</li>
 						<li>SubnetId: {{reservation.Instances[0].SubnetId}}</li>
 						<li>AZ: <em>{{reservation.Instances[0].Placement.AvailabilityZone}}</em></li>
@@ -50,6 +50,10 @@
 					<div class="tags">
 						<span class="glyphicon glyphicon-tags"></span>
 						<span ng-repeat="tag in reservation.Instances[0].Tags">{{tag.Key}}:{{tag.Value}},</span>
+					</div>
+					<div class="pull-right">
+						<div class="glyphicon glyphicon-play lead" ng-click="listinstances.startInstanceWithID(reservation.Instances[0].InstanceId)"></div>
+						<div class="glyphicon glyphicon-stop lead" ng-click="listinstances.stopInstanceWithID(reservation.Instances[0].InstanceId)"></div>
 					</div>
 				</div>
 

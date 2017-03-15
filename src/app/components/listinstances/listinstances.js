@@ -12,14 +12,24 @@
             
             var vm = this;
 
+            console.log("Custom Original Region is: "+ customAWSService.AWS.config.region);
+
             vm.regions;
-            vm.selectedregion;
+            vm.originalRegion = customAWSService.AWS.config.region;
+            vm.selectedRegion = {};
+            vm.selectedRegion.RegionName = vm.originalRegion;
 
             vm.functionType = function(item){
                 return typeof(item);
             }
 
             vm.updateInstanceInfo = function(){
+
+                customAWSService.AWS.config.region = vm.selectedRegion.RegionName;
+                //console.log(customAWSService.AWS.config.region);
+
+                vm.ec2 = new customAWSService.AWS.EC2({apiVersion: '2016-11-15'});
+
                 vm.ec2.describeInstances(params, function(error, dataresponse){
                         if (error) console.log(error, error.stack); // an error occurred
                         else {
@@ -38,13 +48,45 @@
                             //console.log(JSON.stringify(vm.listinstances[0].Instances[0].InstanceId));
 
                        });
+
+                customAWSService.AWS.config.region = vm.originalRegion;
+                //console.log(customAWSService.AWS.config.region);
             }
             
             vm.selectRegion = function(){
                 console.log("##### Selected Region:");
-                console.log(vm.selectedregion.RegionName);
+                console.log(vm.selectedRegion.RegionName);
                 vm.updateInstanceInfo();
                 
+            }
+
+            vm.startInstanceWithID = function(idToStart){
+              var params = {
+                InstanceIds: [ /* required */
+                  idToStart,
+                  /* more items */
+                ],
+                DryRun: false
+              };
+              vm.ec2.startInstances(params, function(err, data) {
+                if (err) console.log(err, err.stack); // an error occurred
+                else     console.log(data);           // successful response
+              });
+            }
+
+            vm.stopInstanceWithID = function(idToStop){
+              var params = {
+                InstanceIds: [ /* required */
+                  idToStop,
+                  /* more items */
+                ],
+                DryRun: false,
+                Force: false
+              };
+              vm.ec2.stopInstances(params, function(err, data) {
+                if (err) console.log(err, err.stack); // an error occurred
+                else     console.log(data);           // successful response
+              });
             }
             
             var params = {
