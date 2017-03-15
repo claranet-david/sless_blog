@@ -2,12 +2,12 @@
 	// body...
 	angular
 		.module('sless_blog')
-		.controller('cloudWatchGraphController', cloudWatchGraphController);
+		.controller('listInstancesController', listInstancesController);
 
 		/** @ngInject */
 
 
-		function cloudWatchGraphController($scope, $http, $route, $routeParams, $q, $interval, $timeout, loginService, customAWSService){
+		function listInstancesController($scope, $http, $route, $routeParams, $q, $interval, $timeout, loginService, customAWSService){
 
             
             var vm = this;
@@ -32,8 +32,8 @@
                             vm.listinstances = response;
                             vm.result = JSON.stringify(response, undefined, 2);
                             console.log(vm.listinstances);
-                            console.log(typeof(vm.listinstances.Reservations[0].Instances[0].PublicIpAddress));
-                            console.log(vm.listinstances.Reservations[0].Instances[0].PublicIpAddress!==undefined);
+                            //console.log(typeof(vm.listinstances.Reservations[0].Instances[0].PublicIpAddress));
+                            //console.log(vm.listinstances.Reservations[0].Instances[0].PublicIpAddress!==undefined);
                             //console.log(vm.listinstances[0]);
                             //console.log(JSON.stringify(vm.listinstances[0].Instances[0].InstanceId));
 

@@ -1,4 +1,4 @@
-<div id="cw-graph">
+<div id="listinstances">
 
 	<p>This is the CloudWatchGraphController route, for testing purposes:</p>
 
@@ -7,12 +7,12 @@
 	<h2>List Instances</h2>
 
 	<div>
-		<select ng-model="cwgraph.selectedregion" ng-options="option.RegionName for option in cwgraph.regions.Regions" name="dropdown"></select>
-		<button id="cwNewRegion" class="btn btn-default" ng-click="cwgraph.selectRegion()">Apply New Region</button>
+		<select ng-model="listinstances.selectedregion" ng-options="option.RegionName for option in listinstances.regions.Regions" name="dropdown"></select>
+		<button id="listInstancesNewRegion" class="btn btn-default" ng-click="listinstances.selectRegion()">Apply New Region</button>
 	</div>
 
 
-	<div ng-repeat="reservations in cwgraph.listinstances">
+	<div ng-repeat="reservations in listinstances.listinstances">
 		<div>
 			<div class="panel well col-md-4" 
 			ng-class="{ 'running':'panel-success', 'stopped':'panel-danger', 'pending': 'panel-warning', 'shutting-down': 'panel-warning', 'terminated': 'panel-warning', 'stopping': 'panel-warning'}[reservation.Instances[0].State.Name]"
@@ -32,7 +32,7 @@
 						<li>Private IP: {{reservation.Instances[0].PrivateIpAddress}}
 						<a href="http://{{reservation.Instances[0].PrivateDnsName}}"><span class="glyphicon glyphicon-new-window"></span></a>
 						</li>
-						<li class="" ng-class="{ 'string' : 'text-primary bg-success', 'undefined' : 'text-muted bg-danger'}[cwgraph.functionType(reservation.Instances[0].PublicIpAddress)]">Public IP: {{reservation.Instances[0].PublicIpAddress}}
+						<li class="" ng-class="{ 'string' : 'text-primary bg-success', 'undefined' : 'text-muted bg-danger'}[listinstances.functionType(reservation.Instances[0].PublicIpAddress)]">Public IP: {{reservation.Instances[0].PublicIpAddress}}
 						<a href="http://{{reservation.Instances[0].PublicDnsName}}"><span class="glyphicon glyphicon-new-window"></span></a>
 						</li>
 						<li>SubnetId: {{reservation.Instances[0].SubnetId}}</li>
@@ -59,7 +59,7 @@
 	</div>
 
 <!--
- 	<div>Result Query: <pre>{{cwgraph.result}}</pre></div> 
+ 	<div>Result Query: <pre>{{listinstances.result}}</pre></div> 
 -->
 
 </div>
