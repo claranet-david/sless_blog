@@ -51,9 +51,10 @@
 						<span class="glyphicon glyphicon-tags"></span>
 						<span ng-repeat="tag in reservation.Instances[0].Tags">{{tag.Key}}:{{tag.Value}},</span>
 					</div>
-					<div class="pull-right">
-						<div class="glyphicon glyphicon-play lead" ng-click="listinstances.startInstanceWithID(reservation.Instances[0].InstanceId)"></div>
-						<div class="glyphicon glyphicon-stop lead" ng-click="listinstances.stopInstanceWithID(reservation.Instances[0].InstanceId)"></div>
+					<div class="">
+						<button class="glyphicon glyphicon-stop lead btn btn-primary btn-sm pull-right" ng-click="listinstances.stopInstanceWithID(reservation.Instances[0].InstanceId)"></button>
+						<button class="glyphicon glyphicon-play lead btn btn-primary btn-sm pull-right" ng-click="listinstances.startInstanceWithID(reservation.Instances[0].InstanceId)"></button>
+						
 					</div>
 				</div>
 
