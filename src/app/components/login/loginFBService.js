@@ -4,7 +4,7 @@
 		.module('sless_blog')
 		.service('loginFBService', loginFBService);
 
-		loginFBService.$inject = ['$location', 'customAWSService', 'globalService'];
+		/** @ngInject */
 
 		function  loginFBService($location, customAWSService, globalService){
 			/*!
