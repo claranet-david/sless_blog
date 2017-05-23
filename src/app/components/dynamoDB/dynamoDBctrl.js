@@ -1,14 +1,14 @@
 (function(){
-	// body...
-	angular
-		.module('sless_blog')
-		.controller('dynamoDBController', dynamoDBController);
+    // body...
+    angular
+        .module('sless_blog')
+        .controller('dynamoDBController', dynamoDBController);
 
-		dynamoDBController.$inject = ['$scope', '$http', '$routeParams','loginService', 'customAWSService'];
+        dynamoDBController.$inject = ['$scope', '$http', '$routeParams','loginService', 'customAWSService'];
 
-		function dynamoDBController($scope, $http, $routeParams, loginService, customAWSService){
+        function dynamoDBController($scope, $http, $routeParams, loginService, customAWSService){
 
-			var vm = this;
+            var vm = this;
             vm.queriedItem = '';
             vm.newItem = {
                 FileName: 'Name for the new file',

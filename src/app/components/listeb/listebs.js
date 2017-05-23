@@ -2,12 +2,12 @@
 	// body...
 	angular
 		.module('sless_blog')
-		.controller('listInstancesController', listInstancesController);
+		.controller('listEBController', listEBController);
 
 		/** @ngInject */
 
 
-		function listInstancesController($scope, $http, $route, $routeParams, $q, $interval, $timeout, loginService, customAWSService){
+		function listEBController($scope, $http, $route, $routeParams, $q, $interval, $timeout, loginService, customAWSService){
 
             
             var vm = this; 
@@ -22,14 +22,14 @@
                 return typeof(item);
             }
 
-            vm.updateInstanceInfo = function(){
+            vm.updateAppsInfo = function(){
 
-                customAWSService.AWS.config.region = customAWSService.selectedRegion || customAWSService.originalRegion;
+                customAWSService.AWS.config.region = customAWSService.selectedRegion || 'us-west-2';
                 //console.log(customAWSService.AWS.config.region);
 
-                vm.ec2 = new customAWSService.AWS.EC2({apiVersion: '2016-11-15'});
+                vm.elasticbeanstalk = new customAWSService.AWS.ElasticBeanstalk({apiVersion: '2016-11-15'});
 
-                vm.ec2.describeInstances(vm.params, function(error, dataresponse){
+                vm.elasticbeanstalk.describeEnvironments(vm.params, function(error, dataresponse){
                         if (error) console.log(error, error.stack); // an error occurred
                         else {
                           //console.log(JSON.stringify(dataresponse));
@@ -38,9 +38,9 @@
                 }).promise()
                        .then(function(response){
                             console.log("PROMISE FULFILLED!!!");
-                            vm.listinstances = response;
+                            vm.listapplications = response;
                             vm.result = JSON.stringify(response, undefined, 2);
-                            console.log(vm.listinstances);
+                            console.log(vm.listapplications);
                             //console.log(typeof(vm.listinstances.Reservations[0].Instances[0].PublicIpAddress));
                             //console.log(vm.listinstances.Reservations[0].Instances[0].PublicIpAddress!==undefined);
                             //console.log(vm.listinstances[0]);
@@ -56,11 +56,11 @@
                 console.log("##### Selected Region:");
                 console.log(vm.selectedRegion.RegionName);
                 customAWSService.selectedRegion = vm.selectedRegion.RegionName;
-                vm.updateInstanceInfo();
+                vm.updateAppsInfo();
                 
             }
 
-            $interval(vm.updateInstanceInfo, 15000);
+            //$interval(vm.updateAppsInfo, 15000);
 
             vm.startInstanceWithID = function(idToStart){
               var params = {
@@ -98,16 +98,16 @@
             }
             
             vm.params = {
-              DryRun: false
+              //DryRun: false
             };
 
-            if($routeParams.instanceid !== undefined){
-              console.log(typeof($routeParams.instanceid));
-              vm.params.InstanceIds = [ $routeParams.instanceid ];
-            }
-            else{
-              vm.params.MaxResults = 100;
-            }
+            // if($routeParams.instanceid !== undefined){
+            //   console.log(typeof($routeParams.instanceid));
+            //   vm.params.InstanceIds = [ $routeParams.instanceid ];
+            // }
+            // else{
+            //   vm.params.MaxResults = 100;
+            // }
 
             vm.ec2 = new customAWSService.AWS.EC2({apiVersion: '2016-11-15'});
 
@@ -121,7 +121,7 @@
                    }
             });
 
-            vm.updateInstanceInfo();
+            vm.updateAppsInfo();
 
 
 

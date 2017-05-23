@@ -1,13 +1,13 @@
 (function(){
-	// body...
-	angular
-		.module('sless_blog')
-		.controller('cloudWatchGraphController', cloudWatchGraphController);
+  // body...
+  angular
+    .module('sless_blog')
+    .controller('cloudWatchGraphController', cloudWatchGraphController);
 
-		/** @ngInject */
+    /** @ngInject */
 
 
-		function cloudWatchGraphController($scope, $http, $route, $routeParams, $q, $interval, $timeout, loginService, customAWSService){
+    function cloudWatchGraphController($scope, $http, $route, $routeParams, $q, $interval, $timeout, loginService, customAWSService){
 
             
             var vm = this;

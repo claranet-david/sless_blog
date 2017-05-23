@@ -13,6 +13,9 @@
 
 			vm.AWS = AWS;
 
+			vm.originalRegion = 'eu-west-1';
+			vm.selectedRegion;
+
 			//if (typeof Promise === 'undefined') {
 			  AWS.config.setPromisesDependency($q);
 			//} //info in https://blogs.aws.amazon.com/javascript/post/Tx3BZ2DC4XARUGG/Support-for-Promises-in-the-SDK

@@ -38,10 +38,25 @@
         controller: 'PromisesController',
         controllerAs: 'promises'
       })
+      .when('/listebs', {
+        templateUrl: 'app/components/listeb/listebs.html',
+        controller: 'listEBController',
+        controllerAs: 'listebs'
+      })
+      .when('/listeb/:ebid', {
+        templateUrl: 'app/components/listeb/listeb.html',
+        controller: 'listEBController',
+        controllerAs: 'listeb'
+      })  
       .when('/listinstances', {
         templateUrl: 'app/components/listinstances/listinstances.html',
         controller: 'listInstancesController',
         controllerAs: 'listinstances'
+      })
+      .when('/listinstance/:instanceid', {
+        templateUrl: 'app/components/listinstances/listinstance.html',
+        controller: 'listInstancesController',
+        controllerAs: 'listinstance'
       })    
       .when('/list',{
         templateUrl: 'app/components/list/list.html',
